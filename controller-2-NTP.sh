@@ -12,7 +12,7 @@ $COM1_MGNT_IP compute1
 $NET_MGNT_IP network
 EOF
 
-apt-get install ubuntu-cloud-keyring
+apt-get -y install ubuntu-cloud-keyring
 echo "deb http://ubuntu-cloud.archive.canonical.com/ubuntu" "trusty-updates/kilo main" > /etc/apt/sources.list.d/cloudarchive-kilo.list
 
 apt-get update -y

@@ -1,7 +1,7 @@
 #!/bin/bash -ex
 source config.cfg
 
-apt-get install ubuntu-cloud-keyring
+apt-get -y install ubuntu-cloud-keyring
 echo "deb http://ubuntu-cloud.archive.canonical.com/ubuntu" "trusty-updates/kilo main" > /etc/apt/sources.list.d/cloudarchive-kilo.list
 
 apt-get install -y neutron-plugin-ml2 neutron-plugin-openvswitch-agent \
