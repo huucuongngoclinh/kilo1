@@ -27,10 +27,20 @@ cp /etc/ntp.conf /etc/ntp.conf.bka
 rm /etc/ntp.conf
 cat /etc/ntp.conf.bka | grep -v ^# | grep -v ^$ >> /etc/ntp.conf
 #
-sed -i 's/server/#server/' /etc/ntp.conf
-echo "server controller" >> /etc/ntp.conf
-echo "net.ipv4.conf.all.rp_filter=0" >> /etc/sysctl.conf
-echo "net.ipv4.conf.default.rp_filter=0" >> /etc/sysctl.conf
+sed -i 's/server 0.ubuntu.pool.ntp.org/ \
+#server 0.ubuntu.pool.ntp.org/g' /etc/ntp.conf
+
+sed -i 's/server 1.ubuntu.pool.ntp.org/ \
+#server 1.ubuntu.pool.ntp.org/g' /etc/ntp.conf
+
+sed -i 's/server 2.ubuntu.pool.ntp.org/ \
+#server 2.ubuntu.pool.ntp.org/g' /etc/ntp.conf
+
+sed -i 's/server 3.ubuntu.pool.ntp.org/ \
+#server 3.ubuntu.pool.ntp.org/g' /etc/ntp.conf
+
+sed -i "s/server ntp.ubuntu.com/server controller iburst/g" /etc/ntp.conf
+
 sysctl -p
 
 echo "Finished"
