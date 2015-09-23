@@ -85,7 +85,7 @@ api_paste_config=/etc/nova/api-paste.ini
 enabled_apis=ec2,osapi_compute,metadata
 
 [oslo_messaging_rabbit]
-rabbit_host = $CON_MGNT_IP
+rabbit_host = controller
 rabbit_userid = openstack
 rabbit_password = $RABBIT_PASS
 
