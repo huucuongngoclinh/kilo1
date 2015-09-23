@@ -213,11 +213,15 @@ service glance-api restart
 #
 sleep 7
 echo "##########IMAGE FOR GLANCE ##########"
+source kilo/kilo1/admin-openrc.sh
+cd
 mkdir images
 cd images/
-#wget http://cdn.download.cirros-cloud.net/0.3.2/cirros-0.3.2-x86_64-disk.img
-#glance image-create --name "cirros-0.3.2-x86_64" --disk-format qcow2 --container-format bare --is-public True --progress < cirros-0.3.2-x86_64-disk.img
-cd /root/
+wget http://download.cirros-cloud.net/0.3.3/cirros-0.3.3-x86_64-disk.img
+glance image-create --name "cirros-0.3.3-x86_64" --disk-format qcow2 --container-format bare --is-public True --progress < cirros-0.3.3-x86_64-disk.img
+
+cd kilo/kilo1/
+
 sleep 5
 glance image-list
 echo "Finished"
