@@ -37,10 +37,18 @@ sed -i 's/restrict -6 default kod notrap nomodify nopeer noquery/ \
 restrict -4 default kod notrap nomodify \
 restrict -6 default kod notrap nomodify/g' /etc/ntp.conf
 
+echo "Install and Config RabbitMQ"
+sleep 3
+curl -O https://www.rabbitmq.com/rabbitmq-signing-key-public.asc
+apt-key add rabbitmq-signing-key-public.asc
+
+echo "deb http://www.rabbitmq.com/debian/ testing main" > /etc/apt/sources.list.d/rabbitmq.list
+#apt-get update 
 apt-get install rabbitmq-server -y
-rabbitmqctl change_password guest $RABBIT_PASS
-sleep 3
+rabbitmqctl add_user openstack $RABBIT_PASS
 rabbitmqctl set_permissions openstack ".*" ".*" ".*"
+# rabbitmqctl change_password guest $RABBIT_PASS
 sleep 3
+
 service rabbitmq-server restart
 echo "Finish"
