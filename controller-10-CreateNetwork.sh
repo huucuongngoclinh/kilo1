@@ -6,7 +6,7 @@ nova secgroup-add-rule default udp 1 65535 0.0.0.0/0
 
 neutron net-create ext_net --router:external True --shared
 
-neutron subnet-create --name sub_ext_net ext_net 192.168.$ID.0/24 --gateway 192.168.$ID.1 --allocation-pool start=192.168.$ID.200,end=192.168.$ID.250 --enable_dhcp=False --dns-nameservers list=true 8.8.8.8 8.8.4.4 210.245.0.11
+neutron subnet-create --name sub_ext_net ext_net 192.168.$ID.0/24 --gateway 192.168.$ID.2 --allocation-pool start=192.168.$ID.200,end=192.168.$ID.250 --enable_dhcp=False --dns-nameservers list=true 8.8.8.8 8.8.4.4 210.245.0.11
 neutron net-create int_net
 sleep 3
 neutron subnet-create int_net --name int_subnet --dns-nameserver 8.8.8.8 172.16.10.0/24

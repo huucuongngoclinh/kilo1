@@ -29,8 +29,8 @@ enabled_apis=ec2,osapi_compute,metadata
 auth_strategy = keystone
 
 rpc_backend = rabbit
-rabbit_host = controller
-rabbit_password = $RABBIT_PASS
+#rabbit_host = controller
+#rabbit_password = $RABBIT_PASS
 
 my_ip = $CON_MGNT_IP
 vncserver_listen = $CON_MGNT_IP
@@ -55,6 +55,11 @@ service_neutron_metadata_proxy = true
 neutron_metadata_proxy_shared_secret = $METADATA_SECRET
 
 network_api_class = nova.network.neutronv2.api.API
+
+[oslo_messaging_rabbit]
+rabbit_host = controller
+rabbit_userid = openstack
+rabbit_password = $RABBIT_PASS
 
 [database]
 connection = mysql://nova:$ADMIN_PASS@controller/nova
